@@ -1,0 +1,12 @@
+C:\Users\Anish\OneDrive\Documents\anish\Account\AES Implementation\DataEncryption\bin\Debug\net6.0\DataEncryption.deps.json
+C:\Users\Anish\OneDrive\Documents\anish\Account\AES Implementation\DataEncryption\bin\Debug\net6.0\DataEncryption.dll
+C:\Users\Anish\OneDrive\Documents\anish\Account\AES Implementation\DataEncryption\bin\Debug\net6.0\DataEncryption.pdb
+C:\Users\Anish\OneDrive\Documents\anish\Account\AES Implementation\DataEncryption\obj\Debug\net6.0\DataEncryption.csproj.AssemblyReference.cache
+C:\Users\Anish\OneDrive\Documents\anish\Account\AES Implementation\DataEncryption\obj\Debug\net6.0\DataEncryption.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Anish\OneDrive\Documents\anish\Account\AES Implementation\DataEncryption\obj\Debug\net6.0\DataEncryption.AssemblyInfoInputs.cache
+C:\Users\Anish\OneDrive\Documents\anish\Account\AES Implementation\DataEncryption\obj\Debug\net6.0\DataEncryption.AssemblyInfo.cs
+C:\Users\Anish\OneDrive\Documents\anish\Account\AES Implementation\DataEncryption\obj\Debug\net6.0\DataEncryption.csproj.CoreCompileInputs.cache
+C:\Users\Anish\OneDrive\Documents\anish\Account\AES Implementation\DataEncryption\obj\Debug\net6.0\DataEncryption.dll
+C:\Users\Anish\OneDrive\Documents\anish\Account\AES Implementation\DataEncryption\obj\Debug\net6.0\refint\DataEncryption.dll
+C:\Users\Anish\OneDrive\Documents\anish\Account\AES Implementation\DataEncryption\obj\Debug\net6.0\DataEncryption.pdb
+C:\Users\Anish\OneDrive\Documents\anish\Account\AES Implementation\DataEncryption\obj\Debug\net6.0\ref\DataEncryption.dll
