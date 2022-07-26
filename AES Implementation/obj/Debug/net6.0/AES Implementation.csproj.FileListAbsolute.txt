@@ -19,3 +19,4 @@ C:\Users\Anish\OneDrive\Documents\anish\Account\AES Implementation\AES Implement
 C:\Users\Anish\OneDrive\Documents\anish\Account\AES Implementation\AES Implementation\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
 C:\Users\Anish\OneDrive\Documents\anish\Account\AES Implementation\AES Implementation\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\Anish\OneDrive\Documents\anish\Account\AES Implementation\AES Implementation\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Anish\OneDrive\Documents\anish\Account\AES Implementation\AES Implementation\bin\Debug\net6.0\Newtonsoft.Json.dll

@@ -63,7 +63,7 @@ namespace DataEncryption
             try
             {
                 var rsa = RSA.Create();
-                rsa.KeySize = 4096;
+                rsa.KeySize = 8192;
                 return rsa;
             }
             catch (Exception ex)

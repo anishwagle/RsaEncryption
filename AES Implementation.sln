@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AES Implementation", "AES Implementation\AES Implementation.csproj", "{84E7774E-E444-4FD0-B638-BA19E74BA6DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AES Implementation", "AES Implementation\AES Implementation.csproj", "{84E7774E-E444-4FD0-B638-BA19E74BA6DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataEncryption", "DataEncryption\DataEncryption.csproj", "{F258D08D-DCF4-4755-898D-3314FEA5DE13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataEncryption", "DataEncryption\DataEncryption.csproj", "{F258D08D-DCF4-4755-898D-3314FEA5DE13}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test web api", "test web api\test web api.csproj", "{CBB50449-F5EB-459D-A187-56EA10412B06}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{F258D08D-DCF4-4755-898D-3314FEA5DE13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F258D08D-DCF4-4755-898D-3314FEA5DE13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F258D08D-DCF4-4755-898D-3314FEA5DE13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBB50449-F5EB-459D-A187-56EA10412B06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBB50449-F5EB-459D-A187-56EA10412B06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBB50449-F5EB-459D-A187-56EA10412B06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBB50449-F5EB-459D-A187-56EA10412B06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
