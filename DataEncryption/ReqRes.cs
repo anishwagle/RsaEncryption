@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AES_Implementation
+namespace DataEncryption
 {
     public class Request
     {
@@ -15,4 +15,17 @@ namespace AES_Implementation
     {
         public string Data { get; set; }
     }
+    public class AesResponse {
+
+        public byte[]? AesEncryptedData { get; set; }
+
+    }
+
+    public class Keys
+    {
+        public string? Rsa { get; set; }
+        public string? Aes { get; set; }
+        public string? AesIv { get; set; }
+    }
+
 }
