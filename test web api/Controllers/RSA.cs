@@ -30,9 +30,9 @@ namespace test_web_api.Controllers
             _logger = logger;
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("connect")]
-        public async Task<IActionResult> GetPublicKey([FromBody] Request key)
+        public async Task<IActionResult> GetPublicKey()
         {
             try
             {
@@ -45,7 +45,7 @@ namespace test_web_api.Controllers
                 var keys = c[1].GetKeys();
            
 
-                 var RsaEncodedAesKey = c[1].RsaEncrypt(keys.Aes, key.Data);
+                 var RsaEncodedAesKey = c[1].EncryptUsingCertificate(keys.Aes);
 
                 keys.Aes = RsaEncodedAesKey;
                 return Ok(keys);
@@ -80,6 +80,33 @@ namespace test_web_api.Controllers
             }catch (Exception ex)
             {
                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpPost]
+        [Route("certcheck")]
+        public async Task<IActionResult> CertEncryptionCheck([FromBody] Keys keys)
+        {
+            try
+            {
+                var cry= new Cryptography();
+               var decryptedAesKey= cry.DecryptUsingCertificate(keys.Aes);
+
+
+               
+                //var aesKey = Encoding.UTF8.GetBytes(decryptedAesKey);
+                var aesKey = Convert.FromBase64String(decryptedAesKey);
+                var iv = Convert.FromBase64String(keys.AesIv);
+                var data = "Test Data 10101!!!";
+                var receivedText = cry.EncryptStringToBytes_Aes(data, aesKey, iv);
+                return Ok(new Response()
+                {
+                    Data = Convert.ToBase64String(receivedText.AesEncryptedData)
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
 

@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
+using System.Reflection;
 using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Xml.Serialization;
 
@@ -28,16 +30,24 @@ namespace DataEncryption
             var xs = new XmlSerializer(typeof(RSAParameters));
             xs.Serialize(sw, PublicKey);
             var test1Aes = Convert.ToBase64String(AesKey);
-            var test1AesIv = Convert.ToBase64String(AesIv);
+            var test2Aes = Encoding.UTF8.GetString(AesKey);
+            //var test1AesIv = Convert.ToBase64String(AesIv);
+           /* return new Keys
+            {
+                Rsa = sw.ToString(),
+                Aes = Convert.ToBase64String(AesKey),
+                AesIv = Convert.ToBase64String(AesIv)
+            };  */
             return new Keys
             {
                 Rsa = sw.ToString(),
+               // Aes = Encoding.UTF8.GetString(AesKey),
                 Aes = Convert.ToBase64String(AesKey),
                 AesIv = Convert.ToBase64String(AesIv)
             };
 
 
-           // return sw.ToString();
+            // return sw.ToString();
         }
 
         public RSAParameters StringToRsa(string key)
@@ -69,23 +79,6 @@ namespace DataEncryption
 
          } 
 
-       /* public byte[] RsaDecrypt(byte[] cypher)
-        {
-            try
-            {
-            RSA.ImportParameters(PrivateKey);
-                // RSA.ImportParameters(PublicKey);
-                // var cypherBytes = Convert.FromBase64String(cypher);
-               var textBytes = RSA.Decrypt(cypher, RSAEncryptionPadding.Pkcs1);
-            // var message = Encoding.Unicode.GetString(textBytes);
-            return textBytes;
-            }catch (Exception ex)
-            {
-                return null;
-            }
-
-        }
-       */
         private RSA GetRSACryptoProvider()
         {
             try
@@ -101,8 +94,6 @@ namespace DataEncryption
             }
         }
 
-        //////////////////////////////////////
-        //////////////////////////////////////
         public AesResponse EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
         {
             // Check arguments.
@@ -191,6 +182,62 @@ namespace DataEncryption
 
         //////////////////////////////////////
         /////////////////////////////////////
+        public string EncryptUsingCertificate(string data)
+        {
+            try
+            {
+                byte[] byteData = Encoding.UTF8.GetBytes(data);
+                //string path = Path.Combine("root", "mycert.pem");
+                var buildDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                string path = @"D:\\Dev\\Encryption\\RsaEncryption\\DataEncryption\\root\\mycert.pem";
+                var collection = new X509Certificate2Collection();
+                collection.Import(path);
+                var certificate = collection[0];
+                var output = "";
+                using (RSA csp = (RSA)certificate.PublicKey.Key)
+                {
+                    byte[] bytesEncrypted = csp.Encrypt(byteData, RSAEncryptionPadding.OaepSHA1);
+                    output = Convert.ToBase64String(bytesEncrypted);
+                }
+                return output;
+            }
+            catch (Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
+        public string DecryptUsingCertificate(string data)
+        {
+            try
+            {
+                byte[] byteData = Convert.FromBase64String(data);
+                //string path = Path.Combine("root", "mycertprivatekey.pfx");
+                string path = @"D:\\Dev\\Encryption\\RsaEncryption\\DataEncryption\\root\\mycertprivatekey.pfx";
+                var Password = "kp686d8t7x"; //Password That We Have Put On Generate Keys  
+                var collection = new X509Certificate2Collection();
+                collection.Import(System.IO.File.ReadAllBytes(path), Password, X509KeyStorageFlags.PersistKeySet | X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.PersistKeySet);
+                X509Certificate2 certificate = new X509Certificate2();
+                certificate = collection[0];
+                foreach (var cert in collection)
+                {
+                    if (cert.FriendlyName.Contains("my certificate"))
+                    {
+                        certificate = cert;
+                    }
+                }
+                if (certificate.HasPrivateKey)
+                {
+                    RSA csp = (RSA)certificate.PrivateKey;
+                    var privateKey = certificate.PrivateKey as RSACryptoServiceProvider;
+                    var keys = Encoding.UTF8.GetString(csp.Decrypt(byteData, RSAEncryptionPadding.OaepSHA1));
+                   
+                    return keys;
+                }
+            }
+            catch (Exception ex) { }
+            return null;
+        }
 
     }
 }
